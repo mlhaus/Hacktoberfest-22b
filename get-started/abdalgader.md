@@ -1,1 +1,0 @@
-Abdalgader is ready :moon:
