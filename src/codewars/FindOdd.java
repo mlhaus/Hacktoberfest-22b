@@ -3,6 +3,7 @@ package codewars;
 import java.util.HashMap;
 import java.util.Map;
 public class FindOdd {
+//    https://www.codewars.com/kata/54da5a58ea159efa38000836/train/java
     public static int findIt(int[] a) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i : a) {
