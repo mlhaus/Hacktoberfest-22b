@@ -1,2 +1,2 @@
-package codewars;public class Smilefaces {
-}
+//package codewars;public class Smilefaces {
+//}
