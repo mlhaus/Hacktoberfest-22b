@@ -81,6 +81,9 @@ public class Map2 {
         return map;
     }
 
+
+
+
     /*
      * Loop over the given array of strings to build a result string like
      * this: when a string appears the 2nd, 4th, 6th, etc. time in the
