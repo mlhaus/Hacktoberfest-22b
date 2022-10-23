@@ -15,4 +15,13 @@ public class OurLinkedListTest {
         assertEquals("chicken wings", list.get(1));
         assertEquals("french fries", list.get(2));
     }
+
+    @Test
+    void peek(){
+        OurLinkedList<String> list2 = new OurLinkedList<>();
+        list2.add("pizza");
+        list2.add("chicken wings");
+        list2.add("french fries");
+        assertEquals("pizza", list2.peek());
+    }
 }

@@ -57,7 +57,7 @@ public class OurLinkedList<T> {
         return (T) currentElement.value;
     }
 
-    public T size() {
+    public T peek() {
         OurLinkedList<T> node = new OurLinkedList<T>();
         T value = node.get(0);
 
