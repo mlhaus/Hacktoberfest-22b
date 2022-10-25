@@ -17,7 +17,11 @@ public class OurLinkedList<T> {
         }
     }
 
-
+public T pop(){
+    last = last.prev;
+    last.next = null;
+    return last.value;
+}
     public void add(int index, T value) {
         Node node = new Node();
         node.value = value;
