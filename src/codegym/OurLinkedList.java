@@ -55,29 +55,26 @@ public class OurLinkedList<T> {
         last.prev = node;
         node.prev = ref;
     }
-
+    // Adding peek(), pop(), and remove() for utility/practice
     // Need to add remove() for use in pop() and pollFirst()
     public void remove() {
-        //System.out.println("FV: " + first.value + " FNV: " + first.next.value + " LPV: " + last.prev.value + " LV: " + last.value);
         Node currentNode = first.next;
         if (first.next != last) {
             Node secondNode;
-            if (currentNode != last.prev) {  // More nodes exist
+            if (currentNode != last.prev) {  // More nodes exist, swap
                 secondNode = currentNode.next;
                 first.next = secondNode;
                 secondNode.prev = first;
-            } else {    // currentNode is last populated node
+            } else {    // currentNode is last populated node, reset
                 first.next = last;
                 last.prev = first;
             }
-            // Erase currentNode
-            currentNode = null;
-        } else {
+            currentNode = null; // Erase currentNode
+        } else { // LinkedList had no content nodes
             throw new NoSuchElementException();
         }
     }
 
-    // Making Pop and Peek methods for practice
     // Retrieves, but does not remove, the head (first element) of this list.
     public T peek() {
         try {
