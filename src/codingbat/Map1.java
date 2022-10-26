@@ -1,5 +1,6 @@
 package codingbat;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Map1 {
@@ -72,6 +73,8 @@ public class Map1 {
         }
         return map;
     }
+
+
 
     /*
      * Given a map of food keys and topping values, modify and return the map

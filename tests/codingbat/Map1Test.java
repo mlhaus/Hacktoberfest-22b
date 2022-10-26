@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import static codingbat.Map1.mapBully;
 import static codingbat.Map1.topping1;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +26,167 @@ class Map1Test {
         Map<String, String> map4 = Map1.mapAB2(map3);
         assertTrue(map4.containsKey("a"));
         assertTrue(map4.containsKey("b"));
+
+    }
+    @Test
+    void tylerb_mapAB3False(){
+        Map<String, String> stuff = new HashMap<>();
+
+        stuff.put("a", "test");
+        stuff.put("a", "test");
+        stuff.put("b", "something");
+        Map<String, String> result = Map1.mapAB3(stuff);
+        String wrong = "{a=test,a=test, b=something}";
+        assertNotEquals(result.toString(), wrong);
+    }
+
+    @Test
+    void john_topping3(){
+        Map<String, String> map = new HashMap<>();
+        map.put("potato","ranch");
+        map.put("salad", "ceaser");
+        Map<String, String> map1 = Map1.topping3(map);
+        assertTrue(map1.containsKey("fries"));
+        assertTrue(map1.containsKey("spinach"));
+        assertEquals("ranch",map1.get("fries"));
+        assertEquals("ceaser",map1.get("spinach"));
+
+        Map<String, String> map2 = new HashMap<>();
+        map2.put("corn","chicken");
+        map2.put("orange", "sugar");
+        Map<String, String> map3 = Map1.topping3(map2);
+        assertFalse(map3.containsKey("fries"));
+        assertFalse(map3.containsKey("spinach"));
+    }
+
+    @Test
+    void gideon_mapBully() {
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("a", "candy");
+        map1=mapBully(map1);
+        assertTrue(map1.containsKey("a"));
+        assertTrue(map1.containsKey("b"));
+        assertEquals("",map1.get("a"));
+        assertEquals("candy",map1.get("b"));
+        map1.put("a", "screamFest");
+        map1=mapBully(map1);
+        assertTrue(map1.containsKey("b"));
+//        assertFalse(Boolean.parseBoolean("candy"),map1.get("b"));
+//        assertFalse("candy",map1.get("b"));
+    }
+  
+    @Test
+    void rith_map_AB(){
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("a","Hi");
+        map1.put("b","There");
+        Map<String, String> map2 = Map1.mapAB(map1);
+        assertEquals("HiThere", map2.get("ab"));
+        Map<String, String> map3 = new HashMap<>();
+        map3.put("b","meh");
+        map3.put("b","meh");
+        Map<String, String> map4 = Map1.mapAB(map3);
+        assertFalse(map4.containsKey("ab"));
+    }
+
+
+    @Test
+    void tylerH_mapShare() {
+        //tylerhand
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("a", "aaa");
+        map1.put("b", "bbb");
+        map1.put("c", "ccc");
+        Map<String, String> map2 = Map1.mapShare(map1);
+        Map<String, String> map3 = new HashMap<>();
+        map3.put("b", "xyz");
+        map3.put("c", "ccc");
+        Map<String, String> map4 = Map1.mapShare(map3);
+        assertTrue(map4.containsKey("b"));
+        assertFalse(map4.containsKey("c"));
+
+    }
+    
+    @Test
+    void nathan_mapShare(){
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("a", "a");
+        map1.put("b", "b");
+        map1.put("c", "c");
+        Map<String, String> map2 = new HashMap<>();
+        map2 = Map1.mapShare(map1);
+        assertEquals("a", map2.get("b"));
+        assertFalse(map2.containsKey("c"));
+
+        Map<String, String> map3 = new HashMap<>();
+        map3.put("b", "b");
+        Map<String, String> map4 = new HashMap<>();
+        map4 = Map1.mapShare(map3);
+        assertEquals("b", map4.get("b"));
+
+        Map<String, String> map5 = new HashMap<>();
+        map5.put("a", "a");
+        Map<String, String> map6 = new HashMap<>();
+        map6 = Map1.mapShare(map5);
+        assertTrue(map6.containsKey("b"));
+        assertEquals("a", map6.get("b"));
+    }
+
+    @Test
+    void zaid_topping1(){
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("ice cream", "");
+        map1.put("bread", "");
+        Map<String, String> map2 = Map1.topping1(map1);
+        assertTrue(map2.get("ice cream").equals("cherry"));
+        assertTrue(map2.get("bread").equals("butter"));
+        assertEquals("butter", map2.get("bread"));
+        assertEquals("cherry", map2.get("ice cream"));
+
+        Map<String, String> map3 = new HashMap<>();
+        map3.put("ice cream", "");
+        map3.put("bread", "");
+        Map<String, String> map4 = Map1.topping1(map3);
+        assertFalse(map4.get("ice cream").equals(""));
+        assertFalse(map4.get("bread").equals(""));
+    }
+    
+    @Test
+    void stephen_mapAB3() {
+        HashMap<String,String> firstMap = new HashMap<>();
+        firstMap.put("a","Test Value");
+        firstMap.put("d","I'm Cool");
+        Map<String, String> testOneMap = Map1.mapAB3(firstMap);
+        assertEquals("Test Value",testOneMap.get("a"));
+        assertEquals("Test Value",testOneMap.get("b"));
+        assertEquals("I'm Cool",testOneMap.get("d"));
+
+
+        HashMap<String,String> secondMap = new HashMap<>();
+        secondMap.put("a","Test Value");
+        secondMap.put("b","Woot Woot");
+        secondMap.put("c","You're Cool");
+        Map<String, String> testTwoMap = Map1.mapAB3(secondMap);
+        assertEquals("Test Value",testTwoMap.get("a"));
+        assertEquals("Woot Woot",testTwoMap.get("b"));
+        assertEquals("You're Cool",testTwoMap.get("c"));
+    }
+
+    @Test
+    void william_mapBully() {
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("a", "f");
+        map1.put("b", "c");
+        Map<String, String> map2 = Map1.mapBully(map1);
+        assertTrue(map2.containsValue(""));
+        assertFalse(map2.containsValue("c"));
+
+        Map<String, String> map3 = new HashMap<>();
+        map3.put("a", "f");
+        map3.put("b", "c");
+        Map<String, String> map4 = Map1.mapBully(map3);
+        assertEquals(map4.containsValue(""), map4.containsKey("a"));
+        assertEquals(map4.containsValue("f"), map4.containsKey("b"));
 
     }
 
@@ -89,8 +250,13 @@ class Map1Test {
         map1.put("ice cream", "42");
         Map1.topping2(map1);
         assertTrue(map1.containsKey("yogurt"));
-    }
 
+        Map<String, String> map3 = new HashMap<>();
+        map3.put("spinach","rats");
+        Map1.topping2(map3);
+        assertEquals(map3.get("spinach") , "nuts");
+//i fixed topping 2
+    }
 
 
     @Test
@@ -120,7 +286,6 @@ class Map1Test {
         assertTrue(topping1(map7).equals(map8));
 
     }
-
 
     @Test
     void andy_mapAB4(){
@@ -156,7 +321,6 @@ class Map1Test {
         assertEquals("no b", returnedMap4.get("a"));
         assertEquals("c stays", returnedMap4.get("c"));
     } // andy_mapAB4 end
-
 
 
     @Test
@@ -226,6 +390,17 @@ class Map1Test {
         //expected3.put("b", "");
         expected3.put("c", "cake");
         assertFalse(Map1.mapAB4(map3).equals(expected3));
+
+        // mapAB4({"a": "aa", "b": "bbb"}) → {"a": "aa", "b": "bbb", "c": "bbb"}
+
+        Map<String, String> map4 = new HashMap<>();
+        map4.put("a", "aa");
+        map4.put("b", "bbb");
+        Map<String, String> expected4 = new HashMap<>();
+        expected4.put("a", "aa");
+        expected4.put("b", "bbb");
+        expected4.put("c", "bbb");
+        assertEquals(Map1.mapAB4(map4),expected4);
     }
 
 
@@ -321,6 +496,36 @@ class Map1Test {
         assertTrue(map4.containsKey("ab"));
 
 
+    }
+
+    @Test
+    void gwen_mapBully() {
+        Map<String, String> map = new HashMap<>();
+        map.put("a", "cookie");
+        map.put("b", "");
+        Map1.mapBully(map);
+        assertEquals("", map.get("a"));
+        assertEquals("cookie", map.get("b"));
+
+        assertTrue("".equals(map.get("a")));
+        assertTrue("cookie".equals(map.get("b")));
+
+    }
+
+    @Test
+    void molly_mapAB3() {
+
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("a", "blue");
+        Map<String, String> map2 = Map1.mapAB3(map1);
+        assertTrue(map2.get("b").equals(map2.get("a")));
+
+
+        Map<String, String> map3 = new HashMap<>();
+        map3.put("a", "purple");
+        map3.put("b", "green");
+        Map<String, String> map4 = Map1.mapAB3(map3);
+        assertFalse(map4.get("b").equals(map4.get("a")));
     }
 
 }

@@ -45,6 +45,7 @@ public class Map2 {
         return map;
     }
 
+
     /*
      * The classic word-count algorithm: given an array of strings, return
      * a Map<String, Integer> with a key for each different string, with
@@ -180,6 +181,5 @@ public class Map2 {
         }
         return strings;
     }
-
 
 }

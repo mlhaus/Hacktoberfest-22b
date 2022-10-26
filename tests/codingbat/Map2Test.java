@@ -1,12 +1,16 @@
 package codingbat;
 
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static codingbat.Map1.mapBully;
+import static codingbat.Map2.wordCount;
 import static codingbat.Map2.wordLen;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Map2Test {
 
@@ -16,6 +20,107 @@ class Map2Test {
         String[] result = Map2.allSwap(strings);
         String[] expected = {"caterpillar", "dog", "butterfly", "cat", "kitten", "kangaroo", "bunny", "centipede", "crocodile"};
         assertEquals(Arrays.toString(expected), Arrays.toString(result));
+    }
+
+    @Test
+    void tylerb_wordLenTrue(){
+        String[] strings = {"One", "Seven", "Four","Testing"};
+        Map<String, Integer> result = Map2.wordLen(strings);
+
+        String excpected = "{One=3, Four=4, Seven=5, Testing=7}";
+        assertEquals(result.toString(), excpected);
+    }
+
+    
+    @Test
+    void tylerH_wordLen() {
+        //tylerhand
+        String[] strings = {"a", "bb", "a", "bb"};
+        Map2.wordLen(strings);
+        assertEquals(2, Map2.wordLen(strings).get("bb"));
+        assertEquals(1, Map2.wordLen(strings).get("a"));
+        assertTrue(Map2.wordLen(strings).containsKey("bb"));
+        assertTrue(Map2.wordLen(strings).containsKey("a"));
+    }
+
+    @Test
+    void zaid_pairs(){
+        String[] strings = {"Hello", "There"};
+        Map<String, String> results = Map2.pairs(strings);
+        Map<String, String> expected = new HashMap<>();
+        expected.put("H","o");
+        expected.put("T","e");
+        assertEquals(expected.toString(), results.toString());
+        assertTrue(expected.equals(results));
+
+        String[] strings2 = {"Taco", "136"};
+        Map<String, String> result2 = Map2.pairs(strings2);
+        Map<String, String> expected2 = new HashMap<>();
+        expected2.put("T","o");
+        expected2.put("1","6");
+        assertEquals(expected2.toString(), result2.toString());
+
+
+
+
+
+
+
+
+
+
+    }
+
+    @Test
+    void gwen_pairs() {
+        String[] namesWithLastInitial = {"GwenA", "StephenJ", "JaymesV"};
+        Map<String, String> initials = Map2.pairs(namesWithLastInitial);
+        assertEquals("A", initials.get("G"));
+        assertEquals("J", initials.get("S"));
+        assertEquals("V", initials.get("J"));
+    }
+    
+    
+
+    @Test
+    void rith_wordCount() {
+        String[] strings = {"cat", "dog", "bunny", "cat", "bunny", "cat"};
+        Map<String, Integer> result = Map2.wordCount(strings);
+        Map<String, Integer> expected = new HashMap<>();
+        expected.put("cat",3);
+        expected.put("dog",1);
+        expected.put("bunny",2);
+        assertEquals(expected, result);
+        assertTrue(result.get("cat")==3);
+    }
+
+  @Test
+    void stephen_wordMultiple() {
+        String[] words = new String[] {"Hi", "Hello", "Hola", "Hi"};
+        Map<String,Boolean> moreThanOne = Map2.wordMultiple(words);
+
+        assertTrue(moreThanOne.get("Hi"));
+        assertFalse(moreThanOne.get("Hola"));
+
+
+        String[] words2 = new String[] {"Hi", "Hello", "Hola","Howdy","Hola", "Hi"};
+
+        Map<String,Boolean> moreThanOne2 = Map2.wordMultiple(words2);
+        assertTrue(moreThanOne2.get("Hi"));
+        assertTrue(moreThanOne2.get("Hola"));
+        assertFalse(moreThanOne2.get("Howdy"));
+    }
+  
+    @Test
+    void john_firstSwap(){
+        String[] str = {"goat","bat","john","bart","george", "kaitlyn","box"};
+        String[] result = Map2.firstSwap(str);
+        String[] expected = {"george","bart","john","bat","goat","kaitlyn","box"};
+        assertEquals(Arrays.toString(expected),Arrays.toString(result));
+        assertTrue(result[2].equals("john"));
+        assertTrue(result[5].equals("kaitlyn"));
+        assertTrue(result[6].equals("box"));
+
     }
 
     @Test
@@ -66,12 +171,26 @@ class Map2Test {
         result2.put("that", 4);
         String[] stringArray2 = {"this", "and", "that", "and"};
         assertTrue(Map2.wordLen(stringArray2).equals(result2));
-
+        
         Map<String, Integer> result3 = new HashMap<>();
         result3.put("this", 4);
         result3.put("and", 3);
         String[] stringArray3 = {"this", "and", "that", "and"};
         assertFalse(Map2.wordLen(stringArray3).equals(result3));
+    }   
+
+
+    @Test
+    void nathan_wordLen(){
+        String[] strings = {"cat", "dog", "bunny", "caterpillar", "kangaroo", "Cat", "cat"};
+        Map<String, Integer> map1 = new HashMap<>();
+        map1 = Map2.wordLen(strings);
+        assertEquals(3, map1.get("cat"));
+        assertEquals(3, map1.get("dog"));
+        assertEquals(5, map1.get("bunny"));
+        assertEquals(11, map1.get("caterpillar"));
+        assertEquals(8, map1.get("kangaroo"));
+        assertEquals(3, map1.get("Cat"));
     }
 
 
@@ -172,6 +291,13 @@ class Map2Test {
         String result3 = Map2.wordAppend(strings3);
         String expected3 = "b";
         assertFalse(result3.equals(expected3));
+
+        // wordAppend(["this", "or", "that", "and", "this", "and", "that"]) → "thisandthat"
+
+        String[] strings4 = {"this", "or", "that", "and", "this", "and", "that"};
+        String result4 = Map2.wordAppend(strings4);
+        String expected4 = "thisandthat";
+        assertTrue(result4.equals(expected4));
     }
 
 
@@ -206,5 +332,37 @@ class Map2Test {
         assertTrue(expected2.containsKey("5"));
         assertTrue(expected2.containsKey("1"));
         assertTrue(expected2.containsValue(0));
+    }
+
+    @Test
+    void gideon_wordCount() {
+        Map<String, Integer> map = new HashMap<>();
+        String[] strings = {"a", "b", "a", "c", "b"};
+        map=wordCount(strings);
+        assertTrue(map.containsKey("a"));
+        assertTrue(map.containsKey("b"));
+        assertTrue(map.containsKey("c"));
+        assertEquals(2,map.get("a"));
+        assertEquals(2,map.get("b"));
+        assertEquals(1,map.get("c"));
+        assertFalse(map.containsKey("d"));
+//        assertFalse(2,map.get("c"));
+    }
+
+    @Test
+    void molly_wordLen() {
+        String[] strings = {"red", "orange", "yellow", "green", "blue", "purple"};
+        Map<String, Integer> map = new HashMap<>();
+        map.put("red", 3);
+        map.put("orange", 6);
+        map.put("yellow", 6);
+        map.put("green", 5);
+        map.put("blue", 4);
+        map.put("purple", 6);
+        Map<String, Integer> resultMap = Map2.wordLen(strings);
+
+        assertTrue(map.equals(resultMap));
+        assertEquals(resultMap.get("red"), map.get("red"));
+        assertFalse(map.containsValue(2));
     }
 }
