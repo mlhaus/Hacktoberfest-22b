@@ -2,6 +2,7 @@ package codegym;
 
 import java.util.List;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 public class OurLinkedList<T> {
     private Node<T> first = new Node<>();
@@ -42,11 +43,13 @@ public class OurLinkedList<T> {
         last.prev = node;
         node.prev = temp;
         node.next = last;
-
     }
 
     public T get(int index) {
         Node currentElement = first.next;
+        if(currentElement == last || currentElement == null){
+            throw new NoSuchElementException("Could not get index");
+        }
         int count = 0;
         while ((count < index && (currentElement) != null)) {
             currentElement = currentElement.next;
@@ -57,14 +60,18 @@ public class OurLinkedList<T> {
         return (T) currentElement.value;
     }
 
+    public T remove(){
+        Node nodeToRemove = first.next;
+        first.next = nodeToRemove.next;
+        nodeToRemove.next.prev = first;
+        return (T) nodeToRemove.value;
+    }
+
     public T peek() {
         OurLinkedList<T> node = new OurLinkedList<T>();
         T value = node.get(0);
-
-
         return value;
     }
-
 
     public static class Node<T> {
         private Node prev;
