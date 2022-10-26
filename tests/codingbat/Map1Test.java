@@ -45,5 +45,4 @@ class Map1Test {
         assertEquals("", map4.get("a"));
 
     }
-
 }

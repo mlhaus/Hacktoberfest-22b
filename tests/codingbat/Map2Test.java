@@ -25,5 +25,4 @@ class Map2Test {
         assertEquals(5, result.get("hello"));
         assertEquals(7, result.get("goodbye"));
     }
-
 }
