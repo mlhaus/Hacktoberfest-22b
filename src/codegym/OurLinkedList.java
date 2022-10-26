@@ -1,8 +1,15 @@
 package codegym;
 
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+
 public class OurLinkedList<T> {
     private Node<T> first = new Node<>();
     private Node<T> last = new Node<>();
+
+
+    transient int size = 0;
+    protected transient int modCount = 0;
 
     public OurLinkedList() {
         first.next = last;
@@ -54,5 +61,30 @@ public class OurLinkedList<T> {
         private Node prev;
         private T value;
         private Node next;
+    }
+    private T unlinkFirst(OurLinkedList.Node<T> f) {
+        // assert f == first && f != null;
+        final T element = f.value;
+        final OurLinkedList.Node<T> next = f.next;
+        f.value = null;
+        f.next = null; // help GC
+        first = next;
+        if (next == null){
+            last = null;
+
+        }
+        else
+            next.prev = null;
+        size--;
+        modCount++;
+        return element;
+    }
+    public T removeFirst(){
+        final Node<T> f = first;
+        if (f == null)
+            throw new NoSuchElementException();
+        return unlinkFirst(f);
+
+
     }
 }

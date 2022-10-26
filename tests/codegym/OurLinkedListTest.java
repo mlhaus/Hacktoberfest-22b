@@ -17,7 +17,9 @@ class OurLinkedListTest {
         assertEquals("french fries", list.get(2));
 
     }
-
+    @Test
+    void removeFirst() {
+    }
     @Test
     void testAdd() {
     }
