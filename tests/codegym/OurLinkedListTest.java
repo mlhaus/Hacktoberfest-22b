@@ -14,6 +14,7 @@ public class OurLinkedListTest {
         assertEquals("pizza", list.get(0));
         assertEquals("chicken wings", list.get(1));
         assertEquals("french fries", list.get(2));
+
     }
 
     @Test

@@ -61,6 +61,7 @@ public class OurLinkedList<T> {
         OurLinkedList<T> node = new OurLinkedList<T>();
         T value = node.get(0);
 
+
         return value;
     }
 
