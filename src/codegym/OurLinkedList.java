@@ -36,6 +36,7 @@ public T pop(){
         node.next = currentElement;
     }
 
+
     public T get(int index) {
         Node currentElement = first.next;
         int count = 0;
@@ -62,13 +63,17 @@ public T pop(){
         private Node next;
     }
 
-    // Retrieves and removes the head (first element) of this list.
-    public T remove( ) {
-        Node node = new Node();
-        node = first;
-        first = first.next;
-        first.prev = null;
 
-        return (T)node.value;
+    public T poll(){
+        var r = first.next;
+        first.next = r.next;
+        r.next.prev=first;
+        return (T)r.value;
+
+//        var rv = first.value;
+//        first.next.prev = first.prev;
+//        first.prev.next = first.next;
+//        return rv;
     }
+
 }
