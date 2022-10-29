@@ -1,5 +1,6 @@
 package codegym;
 
+
 public class OurLinkedList<T> {
     private Node<T> first = new Node<>();
     private Node<T> last = new Node<>();
@@ -70,6 +71,29 @@ public class OurLinkedList<T> {
 //        first.next.prev = first.prev;
 //        first.prev.next = first.next;
 //        return rv;
+    }
+
+    public int size() {
+        Node currentElement = first.next;
+        int count = 0;
+        while ((currentElement) != null) {
+            count++;
+            currentElement = currentElement.next;
+        }
+        return count;
+    }
+
+    public Object[] toArray() {
+        // Matthew Meppelink
+        Node currentElement = first.next;
+        Object[] objArr = new Object[this.size()];
+        int count = 0;
+        while ((currentElement) != null) {
+            objArr[count] = currentElement.value;
+            count++;
+            currentElement = currentElement.next;
+        }
+        return objArr;
     }
 
 }

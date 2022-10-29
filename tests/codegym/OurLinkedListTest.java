@@ -1,6 +1,9 @@
 package codegym;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,6 +32,23 @@ class OurLinkedListTest {
         list.add("chicken wings");
         list.add("french fries");
         assertEquals(list.poll(),"pizza");
+    }
+
+    @Test
+    void toArrayMatthew() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        Object[] expected = new String[]
+                {
+                        "pizza",
+                        "chicken wings",
+                        "french fries"
+                };
+        Object[] result = list.toArray();
+        Assert.assertArrayEquals(expected, result);
+
     }
 
 }
