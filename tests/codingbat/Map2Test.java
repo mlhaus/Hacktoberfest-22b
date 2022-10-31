@@ -253,6 +253,7 @@ class Map2Test {
 
     @Test
     void hoang_wordCount() {
+        //Good test
         String[] strings = {"cat", "dog", "cat", "fish", "rabbit", "rabbit", "rabbit", "bird"};
         Map<String, Integer> map = Map2.wordCount(strings);
         Map<String, Integer> expected = new HashMap<>();
@@ -263,6 +264,8 @@ class Map2Test {
         expected.put("bird", 1);
         assertTrue(expected.equals(map));
 
+
+        //Bad test
         Map<String, Integer> map2 = Map2.wordCount(strings);
         Map<String, Integer> expected2 = new HashMap<>();
         expected2.put("cat", 2);
