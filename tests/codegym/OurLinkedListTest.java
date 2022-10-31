@@ -22,7 +22,7 @@ class OurLinkedListTest {
     }
 
     @Test
-    void testAddFirst() {
+    void ethanm_testAddFirst() {
         // Test to see if the first new node has a value that was added
         OurLinkedList<String> list = new OurLinkedList<>();
         list.add("pizza");
@@ -30,9 +30,9 @@ class OurLinkedListTest {
         list.add("french fries");
         list.addFirst("donut");
         list.addFirst("pretzel");
-        assertEquals(list.getFirst().getValue(), "pretzel");
+        assertEquals("pretzel", list.get(0));
         // Test to see if old first node is the next node for the new first node
-        assertEquals(list.getFirst().getNext().getValue(), "donut");
+        assertEquals("donut", list.get(1));
         // Test to see if the new first node is previous for the old first node
     }
 }

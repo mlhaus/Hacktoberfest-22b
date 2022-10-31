@@ -58,21 +58,12 @@ public class OurLinkedList<T> {
         int count = 0;
         while ((currentElement) != null) {
             if(count == 0){
-                if(first.getValue() == null){
-                    // To handle the case where first is null.  See the add method above.
-                    Node node = new Node();
-                    node.value = obj;
-                    first = node;
-                    first.next = currentElement;
-                    currentElement.prev = first;
-                } else {
-                    // To handle the case where first is not null.
-                    Node node = new Node();
-                    node.value = obj;
-                    first = node;
-                    first.next = currentElement.prev;
-                    currentElement.prev = first;
-                }
+                // To handle the case where first is null.  See the add method above.
+                Node node = new Node();
+                node.value = obj;
+                first.next = node;
+                first.next.next = currentElement;
+                currentElement.prev = first;
             }
             currentElement = currentElement.next;
             count++;
@@ -83,14 +74,5 @@ public class OurLinkedList<T> {
         private Node prev;
         private T value;
         private Node next;
-        public T getValue(){
-            return this.value;
-        }
-        public Node getNext(){
-            return this.next;
-        }
-        public Node getPrev(){
-            return this.prev;
-        }
     }
 }
