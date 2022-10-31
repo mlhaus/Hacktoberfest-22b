@@ -3,9 +3,12 @@ package codegym;
 public class OurLinkedList<T> {
     private Node<T> first = new Node<>();
     private Node<T> last = new Node<>();
+
+
     public Node<T> getFirst(){
         return first;
     }
+
     public OurLinkedList() {
         first.next = last;
         last.prev = first;
@@ -52,6 +55,7 @@ public class OurLinkedList<T> {
         node.prev = ref;
     }
 
+
     public void addFirst(T obj) {
 //        Inserts the specified element at the beginning of this list.
         Node currentElement = first.next;
@@ -70,9 +74,24 @@ public class OurLinkedList<T> {
         }
     }
 
+
     public static class Node<T> {
         private Node prev;
         private T value;
         private Node next;
     }
+
+
+    public T poll(){
+        var r = first.next;
+        first.next = r.next;
+        r.next.prev=first;
+        return (T)r.value;
+
+//        var rv = first.value;
+//        first.next.prev = first.prev;
+//        first.prev.next = first.next;
+//        return rv;
+    }
+
 }
