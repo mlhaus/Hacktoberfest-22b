@@ -238,22 +238,15 @@ public class OurLinkedList<T> {
     }
 
 
-    public int size() {
-        Node currentElement = first.next;
-        int count = 0;
-        while ((currentElement) != null) {
-            count++;
-            currentElement = currentElement.next;
-        }
-        return count;
-    }
-
     public Object[] toArray() {
         // Matthew Meppelink
         Node currentElement = first.next;
         Object[] objArr = new Object[this.size()];
         int count = 0;
         while ((currentElement) != null) {
+            if(currentElement.value == null){
+                break;
+            }
             objArr[count] = currentElement.value;
             count++;
             currentElement = currentElement.next;

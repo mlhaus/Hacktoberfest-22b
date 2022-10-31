@@ -1,6 +1,7 @@
 package codegym;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -12,6 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OurLinkedListTest {
 
+    @BeforeEach
+    void beforeEach(){
+
+    }
     @Test
     void add() {
         OurLinkedList<String> list = new OurLinkedList<>();
@@ -68,8 +73,9 @@ class OurLinkedListTest {
                         "french fries"
                 };
         Object[] result = list.toArray();
-        Assert.assertArrayEquals(expected, result);    
-    
+        Assert.assertArrayEquals(expected, result);
+    }
+
     @Test
     void testRemove() {
         OurLinkedList<String> list = new OurLinkedList<>();
