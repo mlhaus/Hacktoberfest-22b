@@ -1,1 +1,1 @@
-Hello I'm Tyler hand and this is the start of our __group project__.
+Hello I'm Tyler hand and this is the start of our __group project__. hello world of hacktoberfest good day
