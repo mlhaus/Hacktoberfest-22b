@@ -68,9 +68,7 @@ public class OurLinkedList<T> {
     }
 
     public T peek() {
-        OurLinkedList<T> node = new OurLinkedList<T>();
-        T value = node.get(0);
-        return value;
+       return get(0);
     }
 
     public static class Node<T> {
