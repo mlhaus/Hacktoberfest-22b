@@ -26,7 +26,7 @@ class CountingDuplicatesTest {
 
     @Test
     public void abcdeaReturnsOne() {
-        assertEquals(1, CountingDuplicates.duplicateCount("abcdea"));
+        assertEquals(1, CountingDuplicates.duplicateCount("abcdeaf"));
     }
 
     @Test
