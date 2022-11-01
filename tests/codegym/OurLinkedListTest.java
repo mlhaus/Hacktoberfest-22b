@@ -71,6 +71,7 @@ class OurLinkedListTest {
         list2.add("chicken wings");
         list2.add("french fries");
         assertEquals("pizza", list2.peek());
+
     }
 
     @Test
