@@ -13,10 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OurLinkedListTest {
 
-    @BeforeEach
-    void beforeEach(){
-
-    }
     @Test
     void add() {
         OurLinkedList<String> list = new OurLinkedList<>();
