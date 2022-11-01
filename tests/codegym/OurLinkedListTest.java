@@ -18,7 +18,12 @@ class OurLinkedListTest {
 
     }
     @Test
-    void mohmeedremoveFirst() {
+    void mohmeed_removeFirst() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("Mohmeed");
+        list.add("Ahmed");
+        list.add("Ali");
+        assertEquals("Mohmeed", list.removeFirst());
     }
     @Test
     void testAdd() {
@@ -27,8 +32,12 @@ class OurLinkedListTest {
     void mohmeed_remove() {
         OurLinkedList<String> list = new OurLinkedList<>();
         list.add("Reeses");
-        list.add("shkjkfn");
-        list.add("fojfpf");
+        list.add("skittles");
+        list.add("peanut butter");
+        assertEquals("Reeses", list.remove());
+        assertEquals("skittles", list.remove());
+        assertEquals("peanut butter", list.remove());
+
 
     }
 }
