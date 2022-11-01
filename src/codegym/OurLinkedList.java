@@ -55,6 +55,7 @@ public class OurLinkedList<T> {
         ref.next = node;
         last.prev = node;
         node.prev = ref;
+        node.next = last;
     }
 
     public static class Node<T> {
@@ -62,29 +63,18 @@ public class OurLinkedList<T> {
         private T value;
         private Node next;
     }
-    private T unlinkFirst(OurLinkedList.Node<T> f) {
-        // assert f == first && f != null;
-        final T element = f.value;
-        final OurLinkedList.Node<T> next = f.next;
-        f.value = null;
-        f.next = null; // help GC
-        first = next;
-        if (next == null){
-            last = null;
-
-        }
-        else
-            next.prev = null;
-        size--;
-        modCount++;
-        return element;
-    }
     public T removeFirst(){
-        final Node<T> f = first;
-        if (f == null)
-            throw new NoSuchElementException();
-        return unlinkFirst(f);
-
-
+        Node nodeToRemove = first.next;
+        first.next = nodeToRemove.next;
+        nodeToRemove.next.prev = first;
+        return (T) nodeToRemove.value;
     }
+
+    public T remove(){
+        Node nodeToRemove = first.next; // refrence to the node
+        first.next = nodeToRemove.next; // discounting
+        nodeToRemove.next.prev = first; // conecting the node
+        return (T) nodeToRemove.value;
+    }
+
 }

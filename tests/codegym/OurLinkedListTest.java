@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OurLinkedListTest {
 
     @Test
-    void add() {
+    void mohmeedadd() {
         OurLinkedList<String> list = new OurLinkedList<>();
         list.add("pizza");
         list.add("chicken wings");
@@ -18,9 +18,17 @@ class OurLinkedListTest {
 
     }
     @Test
-    void removeFirst() {
+    void mohmeedremoveFirst() {
     }
     @Test
     void testAdd() {
+    }
+    @Test
+    void mohmeed_remove() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("Reeses");
+        list.add("shkjkfn");
+        list.add("fojfpf");
+
     }
 }
