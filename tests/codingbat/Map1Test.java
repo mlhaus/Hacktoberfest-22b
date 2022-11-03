@@ -28,4 +28,21 @@ class Map1Test {
 
     }
 
+    @Test
+    void toney_mapBully() {
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("a", "cat");
+        map1.put("b", "");
+        Map<String, String> map2 = Map1.mapBully(map1);
+        assertTrue(map2.containsKey("a"));
+        assertTrue(map2.containsKey("b"));
+
+        Map<String, String> map3 = new HashMap<>();
+        map1.put("a", "duck");
+        map1.put("b", "cat");
+        Map<String, String> map4 = Map1.mapBully(map1);
+        assertFalse(map4.containsKey("cat"));
+        assertFalse(map4.containsKey("shark"));
+
+    }
 }
