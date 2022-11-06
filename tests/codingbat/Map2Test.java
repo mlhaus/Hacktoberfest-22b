@@ -34,7 +34,7 @@ class Map2Test {
     
     @Test
     void tylerH_wordLen() {
-        //tylerhand
+        //
         String[] strings = {"a", "bb", "a", "bb"};
         Map2.wordLen(strings);
         assertEquals(2, Map2.wordLen(strings).get("bb"));
@@ -127,11 +127,8 @@ class Map2Test {
     void william_wordLen() {
         String[] strings = {"hello", "goodbye"};
         Map<String, Integer> result = Map2.wordLen(strings);
-        assertTrue(result.containsValue(5));
-        assertTrue(result.containsValue(7));
-        assertFalse(result.containsValue(8));
-        assertEquals(result.containsValue(5), result.containsValue(5));
-        assertEquals(result.containsKey("hello"), result.containsKey("hello"));
+        assertEquals(5, result.get("hello"));
+        assertEquals(7, result.get("goodbye"));
     }
 
     @Test
