@@ -90,15 +90,28 @@ class OurLinkedListTest {
     }
 
     @Test
+    void testPop() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        assertEquals("french fries", list.pop());
+    }
+
+
+    @Test
     void testRemove() {
         OurLinkedList<String> list = new OurLinkedList<>();
         list.add("pizza");
         list.add("chicken wings");
         list.add("french fries");
         String remove1 = list.remove();
-
         assertEquals(remove1, "pizza");
-
+        // first head remove is null because add method never set value for first.
+        assertNull(remove1);
+        String remove2 = list.remove();
+        // now we can expect the first node added to be return.
+        assertEquals(remove2, "pizza");
     }
 
     @Test
@@ -311,7 +324,6 @@ class OurLinkedListTest {
         list.clear();
         list.printAll();
 //        assertTrue();
-
     }
 
 }
