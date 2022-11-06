@@ -34,7 +34,7 @@ class Map2Test {
     
     @Test
     void tylerH_wordLen() {
-        //tylerhand
+        //
         String[] strings = {"a", "bb", "a", "bb"};
         Map2.wordLen(strings);
         assertEquals(2, Map2.wordLen(strings).get("bb"));
@@ -127,11 +127,8 @@ class Map2Test {
     void william_wordLen() {
         String[] strings = {"hello", "goodbye"};
         Map<String, Integer> result = Map2.wordLen(strings);
-        assertTrue(result.containsValue(5));
-        assertTrue(result.containsValue(7));
-        assertFalse(result.containsValue(8));
-        assertEquals(result.containsValue(5), result.containsValue(5));
-        assertEquals(result.containsKey("hello"), result.containsKey("hello"));
+        assertEquals(5, result.get("hello"));
+        assertEquals(7, result.get("goodbye"));
     }
 
     @Test
@@ -253,6 +250,7 @@ class Map2Test {
 
     @Test
     void hoang_wordCount() {
+        //Good test
         String[] strings = {"cat", "dog", "cat", "fish", "rabbit", "rabbit", "rabbit", "bird"};
         Map<String, Integer> map = Map2.wordCount(strings);
         Map<String, Integer> expected = new HashMap<>();
@@ -263,6 +261,8 @@ class Map2Test {
         expected.put("bird", 1);
         assertTrue(expected.equals(map));
 
+
+        //Bad test
         Map<String, Integer> map2 = Map2.wordCount(strings);
         Map<String, Integer> expected2 = new HashMap<>();
         expected2.put("cat", 2);
