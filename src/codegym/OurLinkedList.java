@@ -9,11 +9,6 @@ public class OurLinkedList<T> {
     private Node<T> first = new Node<>();
     private Node<T> last = new Node<>();
 
-
-    public Node<T> getFirst(){
-        return first;
-    }
-
     public OurLinkedList() {
         first.next = last;
         last.prev = first;
