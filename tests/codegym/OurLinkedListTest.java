@@ -145,6 +145,7 @@ class OurLinkedListTest {
         list.add("soda");
         list.rith_remove("french fries");
         assertEquals("soda",list.get(1));
+        assertTrue(list.rith_remove("soda"));
 
     }
 
