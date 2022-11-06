@@ -22,7 +22,6 @@ public class OurLinkedList<T> {
         }
     }
 
-
     public void add(int index, T value) {
         Node node = new Node();
         node.value = value;
@@ -49,7 +48,6 @@ public class OurLinkedList<T> {
         }
         return (T) currentElement.value;
     }
-
 
     public void add(T value) {
         Node node = new Node();
@@ -97,6 +95,25 @@ public class OurLinkedList<T> {
         return value;
     }
 
+
+    public void addFirst(T obj) {
+//        Inserts the specified element at the beginning of this list.
+        Node currentElement = first.next;
+        int count = 0;
+        while ((currentElement) != null) {
+            if(count == 0){
+                // To handle the case where first is null.  See the add method above.
+                Node node = new Node();
+                node.value = obj;
+                first.next = node;
+                first.next.next = currentElement;
+                currentElement.prev = first;
+            }
+            currentElement = currentElement.next;
+            count++;
+        }
+    }
+    
     public T set(int index, T value) {
         Node node = new Node();
         node.value = value;
