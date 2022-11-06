@@ -92,7 +92,7 @@ class Map1Test {
 
     @Test
     void tylerH_mapShare() {
-        //tylerhand
+        //tyler hand
         Map<String, String> map1 = new HashMap<>();
         map1.put("a", "aaa");
         map1.put("b", "bbb");
@@ -185,8 +185,8 @@ class Map1Test {
         map3.put("a", "f");
         map3.put("b", "c");
         Map<String, String> map4 = Map1.mapBully(map3);
-        assertEquals(map4.containsValue(""), map4.containsKey("a"));
-        assertEquals(map4.containsValue("f"), map4.containsKey("b"));
+        assertEquals("f", map4.get("b"));
+        assertEquals("", map4.get("a"));
 
     }
 
