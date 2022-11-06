@@ -260,10 +260,27 @@ public class OurLinkedList<T> {
 //        return rv;
     }
 
-    public void clear() {
+
+    public Object[] toArray() {
+        // Matthew Meppelink
+        Node currentElement = first.next;
+        Object[] objArr = new Object[this.size()];
+        int count = 0;
+        while ((currentElement) != null) {
+            if(currentElement.value == null){
+                break;
+            }
+            objArr[count] = currentElement.value;
+            count++;
+            currentElement = currentElement.next;
+        }
+        return objArr;
+    }
+    
+      public void clear() {
         first.next = last;
         last.prev = first;
-    }
+      }
 
     // Retrieves and removes the head (first element) of this list.
     public T remove() {
