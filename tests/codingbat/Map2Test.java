@@ -27,15 +27,6 @@ class Map2Test {
         String[] expected = {"ac", "ab"};
         assertEquals(Arrays.toString(expected), Arrays.toString(result));
     }
-    @Test
-    void mohmeed_removeFirst() {
-        OurLinkedList<String> list = new OurLinkedList<>();
-        list.add("Mohmeed");
-        list.add("Ahmed");
-        list.add("Ali");
-        assertEquals("Mohmeed", list.removeFirst());
-    }
-
 
     @Test
     void marwa_fistSwap() {
