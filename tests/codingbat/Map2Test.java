@@ -365,4 +365,13 @@ class Map2Test {
         assertEquals(resultMap.get("red"), map.get("red"));
         assertFalse(map.containsValue(2));
     }
+
+    @Test
+    void toney_word0() {
+        String[] map = {"a", String.valueOf(1),"b", String.valueOf(2)};
+
+        Map<String, Integer> results = Map2.word0(map);
+        assertTrue(results.containsKey("a"));
+        assertFalse(results.containsValue(1));
+    }
 }

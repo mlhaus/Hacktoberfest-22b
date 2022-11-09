@@ -1,15 +1,16 @@
 package codegym;
 
+import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.time.LocalDate;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 class OurLinkedListTest {
-
     @Test
     void add() {
         OurLinkedList<String> list = new OurLinkedList<>();
@@ -19,6 +20,7 @@ class OurLinkedListTest {
         assertEquals("pizza", list.get(0));
         assertEquals("chicken wings", list.get(1));
         assertEquals("french fries", list.get(2));
+
     }
 
     @Test
@@ -45,13 +47,20 @@ class OurLinkedListTest {
     }
 
     @Test
-    void poll() {
+    void ethanm_testAddFirst() {
+        // Test to see if the first new node has a value that was added
         OurLinkedList<String> list = new OurLinkedList<>();
         list.add("pizza");
         list.add("chicken wings");
         list.add("french fries");
-        assertEquals(list.poll(),"pizza");
+        list.addFirst("donut");
+        list.addFirst("pretzel");
+        assertEquals("pretzel", list.get(0));
+        // Test to see if old first node is the next node for the new first node
+        assertEquals("donut", list.get(1));
+        // Test to see if the new first node is previous for the old first node
     }
+
     @Test
     //Tyler Hand
     void addLast() {
@@ -65,12 +74,144 @@ class OurLinkedListTest {
     }
 
     @Test
-    void april_testPeek(){
+    void toArrayMatthew() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        Object[] expected = new String[]
+                {
+                        "pizza",
+                        "chicken wings",
+                        "french fries"
+                };
+        Object[] result = list.toArray();
+        Assert.assertArrayEquals(expected, result);
+    }
+
+    @Test
+    void testPop() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        assertEquals("french fries", list.pop());
+    }
+
+
+    @Test
+    void testRemove() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        String remove1 = list.remove();
+        assertEquals(remove1, "pizza");
+        // first head remove is null because add method never set value for first.
+        assertNull(remove1);
+        String remove2 = list.remove();
+        // now we can expect the first node added to be return.
+        assertEquals(remove2, "pizza");
+    }
+
+    @Test
+    void testSize() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        assertEquals(3, list.size());
         OurLinkedList<String> list2 = new OurLinkedList<>();
-        list2.add("pizza");
-        list2.add("chicken wings");
-        list2.add("french fries");
-        assertEquals("pizza", list2.peek());
+        assertEquals(0, list2.size());
+    }
+
+    @Test
+    void testToArrayParameterised() {
+        LocalDate firstTime = LocalDate.of(1998,9,27);
+        LocalDate secondTime = LocalDate.of(1999,12,15);
+        LocalDate thirdTime = LocalDate.now();
+        OurLinkedList<LocalDate> dates = new OurLinkedList<>();
+        dates.add(firstTime);
+        dates.add(secondTime);
+        dates.add(thirdTime);
+
+        LocalDate[] datesArray = dates.toArray(new LocalDate[0]);
+
+        assertEquals(firstTime, datesArray[0]);
+        assertEquals(secondTime, datesArray[1]);
+        assertEquals(thirdTime, datesArray[2]);
+    }
+
+    @Test
+    void pollLast(){
+    OurLinkedList<Integer> li = new OurLinkedList<Integer>();
+    li.add(1);
+    li.add(2);
+    li.add(3);
+    li.add(4);
+    assertEquals(4, li.pollLast());
+    assertEquals(null, li.get(3));
+    }
+
+    @Test
+    void hoang_Test_set() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");  
+        list.set(1, "cookies");
+        assertEquals("cookies", list.get(1));
+        list.add("candy");
+        list.add("book");
+        list.set(4, "banana");
+        list.set(1, "apple");
+        assertEquals("banana", list.get(4));
+        assertEquals("apple", list.get(1));
+    }
+
+    @Test
+    void rith_removeValue(){
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");    
+        list.rith_remove("pizza");
+        list.rith_remove("soda");
+        assertEquals("chicken wings",list.get(0));
+        assertEquals("french fries",list.get(1));
+
+        list.add("soda");
+        list.rith_remove("french fries");
+        assertEquals("soda",list.get(1));
+        assertTrue(list.rith_remove("soda"));
+
+    }
+
+
+
+
+    @Test
+    void gwenTestOfferFirst() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("Java");
+        list.add("Python");
+        list.offerFirst("C#");
+        assertTrue(list.get(0).equals("C#"));
+        assertTrue(list.get(1).equals("Java"));
+        assertTrue(list.get(2).equals("Python"));
+    }
+
+    @Test
+    void testContains(){
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        assertTrue(list.contains("pizza"));
+        assertTrue(list.contains("french fries"));
+        assertTrue(list.contains("chicken wings"));
+        assertFalse(list.contains("PIZZA"));
+        assertFalse(list.contains("burger"));
 
     }
 
@@ -150,6 +291,39 @@ class OurLinkedListTest {
         assertEquals("five", list.getLast());
         OurLinkedList<String> list2 = new OurLinkedList<>();
         assertThrows(NoSuchElementException.class, () -> list2.getLast());
+    }
+
+    @Test
+    public void GideonTestRemoveLastOccurrence() {
+
+        OurLinkedList<String> list = new OurLinkedList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("a");
+        list.add(null);
+        assertEquals(true,list.removeLastOccurrence("a"));
+        assertEquals(true,list.removeLastOccurrence(null));
+        assertFalse(list.removeLastOccurrence("c"));
+        OurLinkedList<Integer> listtwo = new OurLinkedList<Integer>();
+        listtwo.add(1);
+        listtwo.add(2);
+        listtwo.add(1);
+        listtwo.add(null);
+        assertEquals(true,listtwo.removeLastOccurrence(1));
+        assertEquals(true,list.removeLastOccurrence(null));
+        assertFalse(listtwo.removeLastOccurrence(3));
+    }
+
+    @Test    
+    void clear() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        list.printAll();
+        list.clear();
+        list.printAll();
+//        assertTrue();
     }
 
 }
