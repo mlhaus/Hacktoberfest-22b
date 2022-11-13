@@ -155,12 +155,12 @@ public class OurLinkedList<T> {
         return (T) nodeToRemove.value;
     }
 
-    public T remove(){
-        Node nodeToRemove = first.next; // refrence to the node
-        first.next = nodeToRemove.next; // discounting
-        nodeToRemove.next.prev = first; // conecting the node
-        return (T) nodeToRemove.value;
-    }
+//    public T remove(){
+//        Node nodeToRemove = first.next; // refrence to the node
+//        first.next = nodeToRemove.next; // discounting
+//        nodeToRemove.next.prev = first; // conecting the node
+//        return (T) nodeToRemove.value;
+//    }
 
     public T pollLast(){
         Node remove = last.prev;
