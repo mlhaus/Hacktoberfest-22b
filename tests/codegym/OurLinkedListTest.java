@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class OurLinkedListTest {
     @Test
-    void add() {
+    void mohmeedadd() {
         OurLinkedList<String> list = new OurLinkedList<>();
         list.add("pizza");
         list.add("chicken wings");
@@ -22,7 +22,14 @@ class OurLinkedListTest {
         assertEquals("french fries", list.get(2));
 
     }
-
+    @Test
+    void mohmeed_removeFirst() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("Mohmeed");
+        list.add("Ahmed");
+        list.add("Ali");
+        assertEquals("Mohmeed", list.removeFirst());
+    }
     @Test
     void testGetFirst(){
         OurLinkedList<String> list = new OurLinkedList<>();
@@ -113,6 +120,21 @@ class OurLinkedListTest {
         // now we can expect the first node added to be return.
         assertEquals(remove2, "pizza");
     }
+
+
+    @Test
+    void mohmeed_remove() {
+        OurLinkedList<String> list = new OurLinkedList<>();
+        list.add("Reeses");
+        list.add("skittles");
+        list.add("peanut butter");
+        assertEquals("Reeses", list.remove());
+        assertEquals("skittles", list.remove());
+        assertEquals("peanut butter", list.remove());
+
+
+    }
+
 
     @Test
     void testSize() {
@@ -327,4 +349,3 @@ class OurLinkedListTest {
     }
 
 }
-

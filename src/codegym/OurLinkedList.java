@@ -9,6 +9,10 @@ public class OurLinkedList<T> {
     private Node<T> first = new Node<>();
     private Node<T> last = new Node<>();
 
+
+    transient int size = 0;
+    protected transient int modCount = 0;
+
     public OurLinkedList() {
         first.next = last;
         last.prev = first;
@@ -143,6 +147,20 @@ public class OurLinkedList<T> {
         private T value;
         private Node next;
     }
+
+    public T removeFirst(){
+        Node nodeToRemove = first.next;
+        first.next = nodeToRemove.next;
+        nodeToRemove.next.prev = first;
+        return (T) nodeToRemove.value;
+    }
+
+//    public T remove(){
+//        Node nodeToRemove = first.next; // refrence to the node
+//        first.next = nodeToRemove.next; // discounting
+//        nodeToRemove.next.prev = first; // conecting the node
+//        return (T) nodeToRemove.value;
+//    }
 
     public T pollLast(){
         Node remove = last.prev;
