@@ -326,6 +326,13 @@ public class OurLinkedList<T> {
 
     }
 
+    public T peek(){
+        if(first.next.value == null){
+            return null;
+        }
+        return (T) first.next.value;
+    }
+
     public Boolean removeLastOccurrence(T o) {
 
         if (o == null) {

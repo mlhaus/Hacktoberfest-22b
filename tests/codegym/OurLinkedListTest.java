@@ -326,5 +326,15 @@ class OurLinkedListTest {
 //        assertTrue();
     }
 
+    @Test
+    void peek(){
+        OurLinkedList<String> list = new OurLinkedList<>();
+        assertEquals(null, list.peek());
+        list.add("pizza");
+        list.add("chicken wings");
+        list.add("french fries");
+        assertEquals("pizza", list.peek());
+    }
+
 }
 
